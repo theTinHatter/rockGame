@@ -8,9 +8,16 @@ public class rockScript : MonoBehaviour
     Rigidbody rb;
     public Vector3 pushForce; 
     public Vector3 resetPos;
+
+    public float weight;
+
+    public playerScript play;
+    public int oldValue;
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
+        oldValue = PlayerPrefs.GetInt("Old");
+        randomizeWeight();
     }
 
     // Update is called once per frame
@@ -23,10 +30,18 @@ public class rockScript : MonoBehaviour
     
     void OnTriggerEnter(Collider collider){
         if(collider.gameObject.tag == "Reset"){
-            // this.transform.position = resetPos;
-            // pushForce -= pushForce;
-            // Debug.Log("Hit");
+            this.transform.position = resetPos;
+            pushForce -= pushForce;
+            Debug.Log("Hit");
+            oldValue = play.score;
+            PlayerPrefs.SetInt("Old", oldValue);
             SceneManager.LoadScene("SampleScene");
         }
+    }
+
+    void randomizeWeight(){
+        weight = Random.Range(0.01f, 1f);
+
+        rb.mass = weight;
     }
 }

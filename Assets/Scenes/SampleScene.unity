@@ -869,6 +869,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rock: {fileID: 1384242724}
+  score: 0
+  time: 0
+  maxTime: 0
+  rocky: {fileID: 1384242729}
 --- !u!1 &1145337648
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,6 +1354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pushForce: {x: 16, y: 0, z: 0}
   resetPos: {x: -13, y: -11, z: 0}
+  play: {fileID: 963194229}
+  oldValue: 0
 --- !u!54 &1384242730
 Rigidbody:
   m_ObjectHideFlags: 0
