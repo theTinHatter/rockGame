@@ -40,7 +40,7 @@ public class rockScript : MonoBehaviour
     }
 
     void randomizeWeight(){
-        weight = Random.Range(0.01f, 1f);
+        weight = Random.Range(0.5f, 1f);
 
         rb.mass = weight;
     }

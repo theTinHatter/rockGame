@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerScript : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class playerScript : MonoBehaviour
     public float maxTime;
 
     public rockScript rocky;
+
+    public Text text;
 
     void Start()
     {
@@ -36,6 +39,8 @@ public class playerScript : MonoBehaviour
             PlayerPrefs.SetInt("Score", score);
             changeTime();
         }
+
+        text.text = "Score:" + score;
     }
 
     void changeTime(){
