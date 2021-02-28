@@ -14,6 +14,9 @@ public class playerScript : MonoBehaviour
     public float time;
     public float maxTime;
 
+    public float deductT;
+    public float maxDeductT;
+
     public rockScript rocky;
 
     public Text text;
@@ -31,13 +34,27 @@ public class playerScript : MonoBehaviour
         rockPos = new Vector3(rock.transform.position.x, rock.transform.position.y, -2);
         this.transform.position = rockPos;
 
-        time += Time.deltaTime;
 
-        if (time >= maxTime){
-            time = 0;
-            score += 1;
-            PlayerPrefs.SetInt("Score", score);
-            changeTime();
+        if (rocky.rb.velocity.x > 0)
+        {
+            time += Time.deltaTime;
+            if (time >= maxTime)
+            {
+                time = 0;
+                score += 1;
+                PlayerPrefs.SetInt("Score", score);
+                changeTime();
+            }
+        }
+
+        if (rocky.rb.velocity.x < 0){
+            deductT += Time.deltaTime;
+            if (deductT >= maxDeductT){
+                deductT = 0;
+                score -= 1;
+                PlayerPrefs.SetInt("Score", score);
+                changeDeduct();
+            }
         }
 
         text.text = "Score:" + score;
@@ -45,5 +62,9 @@ public class playerScript : MonoBehaviour
 
     void changeTime(){
         maxTime = Random.Range(3, 5);
+    }
+
+    void changeDeduct(){
+        maxDeductT = Random.Range(1, 3);
     }
 }

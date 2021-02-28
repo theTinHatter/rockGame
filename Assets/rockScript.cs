@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class rockScript : MonoBehaviour
 {
-    Rigidbody rb;
+    public Rigidbody rb;
     public Vector3 pushForce; 
     public Vector3 resetPos;
 
@@ -40,7 +40,7 @@ public class rockScript : MonoBehaviour
     }
 
     void randomizeWeight(){
-        weight = Random.Range(0.5f, 1f);
+        weight = Random.Range(0.2f, 0.4f);
 
         rb.mass = weight;
     }
