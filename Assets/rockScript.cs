@@ -13,6 +13,9 @@ public class rockScript : MonoBehaviour
 
     public playerScript play;
     public int oldValue;
+
+    public GameObject checkpoint;
+
     void Start()
     {
         rb = this.GetComponent<Rigidbody>();
@@ -30,12 +33,16 @@ public class rockScript : MonoBehaviour
     
     void OnTriggerEnter(Collider collider){
         if(collider.gameObject.tag == "Reset"){
-            this.transform.position = resetPos;
-            pushForce -= pushForce;
+            //this.transform.position = resetPos;
+            //pushForce -= pushForce;
             Debug.Log("Hit");
             oldValue = play.score;
             PlayerPrefs.SetInt("Old", oldValue);
-            SceneManager.LoadScene("SampleScene");
+            //SceneManager.LoadScene("SampleScene");
+            transform.position = checkpoint.transform.position;
+            transform.rotation = checkpoint.transform.rotation;
+            Physics.SyncTransforms();
+            randomizeWeight();
         }
     }
 
